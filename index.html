@@ -21,7 +21,6 @@
             justify-content: center;
             align-items: center;
             color: white;
-            transition: background 1s ease;
         }
         
         .container {
@@ -84,39 +83,24 @@
         .buttons {
             display: flex;
             justify-content: center;
-            gap: 15px;
             margin-top: 30px;
-            flex-wrap: wrap;
         }
         
         .btn {
             background: linear-gradient(45deg, #0066ff, #00ccff);
             color: white;
             border: none;
-            padding: 15px 30px;
+            padding: 15px 40px;
             border-radius: 50px;
-            font-size: 18px;
+            font-size: 20px;
             cursor: pointer;
             transition: all 0.3s ease;
             font-weight: bold;
-            min-width: 180px;
         }
         
         .btn:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 102, 255, 0.4);
-        }
-        
-        .btn-copy {
-            background: linear-gradient(45deg, #00cc00, #00ff88);
-        }
-        
-        .btn-hide {
-            background: linear-gradient(45deg, #ff6600, #ffaa00);
-        }
-        
-        .btn-bg {
-            background: linear-gradient(45deg, #9900ff, #cc00ff);
         }
         
         .message {
@@ -132,18 +116,10 @@
             opacity: 1;
         }
         
-        .footer {
-            margin-top: 40px;
-            color: #888888;
-            font-size: 14px;
-        }
-        
-        /* تصميم للهواتف */
         @media (max-width: 600px) {
             .logo { font-size: 36px; }
             .password { font-size: 48px; }
             .btn { width: 100%; max-width: 300px; }
-            .buttons { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
@@ -154,63 +130,23 @@
         
         <div class="password-container">
             <div class="password-label">كلمة المرور:</div>
-            <div class="password" id="password">kai</div>
+            <div class="password">kai</div>
             
             <div class="buttons">
-    <button class="btn btn-copy" onclick="copyPassword()">📋 نسخ كلمة المرور</button>
+                <button class="btn" onclick="copyPassword()">📋 نسخ كلمة المرور</button>
             </div>
             
             <div class="message" id="message"></div>
         </div>
         
-        <div class="footer">
-            تم الإنشاء بواسطة GitHub Pages | تحديث تلقائي
-        </div>
+        <!-- تم حذف الفوتر هنا -->
     </div>
 
     <script>
-        // خلفيات متنوعة
-        const backgrounds = [
-            'https://images.unsplash.com/photo-1519681393784-d120267933ba', // فضاء
-            'https://images.unsplash.com/photo-1506744038136-46273834b3fb', // جبال
-            'https://images.unsplash.com/photo-1518837695005-2083093ee35b', // مدينة
-            'https://images.unsplash.com/photo-1493246507139-91e8fad9978e', // غابة
-            'https://images.unsplash.com/photo-1506905925346-21bda4d32df4', // قمم
-            'https://images.unsplash.com/photo-1519681393784-d120267933ba'  // أضواء
-        ];
-        
-        let passwordVisible = true;
-        let bgIndex = 0;
-        
         function copyPassword() {
             navigator.clipboard.writeText('kai').then(() => {
                 showMessage('✅ تم نسخ كلمة المرور بنجاح!');
             });
-        }
-        
-        function togglePassword() {
-            const passwordEl = document.getElementById('password');
-            passwordVisible = !passwordVisible;
-            
-            if (passwordVisible) {
-                passwordEl.textContent = 'kai';
-                passwordEl.style.color = '#00ff9d';
-            } else {
-                passwordEl.textContent = '••••';
-                passwordEl.style.color = '#ff4444';
-            }
-            
-            showMessage(passwordVisible ? '👁️ كلمة المرور مرئية' : '👁️ كلمة المرور مخفية');
-        }
-        
-        function changeBackground() {
-            bgIndex = (bgIndex + 1) % backgrounds.length;
-            document.body.style.background = 
-                `linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-                 url('${backgrounds[bgIndex]}') no-repeat center center fixed`;
-            document.body.style.backgroundSize = 'cover';
-            
-            showMessage('🎨 تم تغيير الخلفية');
         }
         
         function showMessage(text) {
@@ -223,10 +159,9 @@
             }, 2000);
         }
         
-        // تأثير عند فتح الصفحة
         window.onload = function() {
             setTimeout(() => {
-                showMessage('👋 مرحبًا! استخدم الأزرار للتحكم');
+                showMessage('👋 اضغط على الزر لنسخ كلمة المرور');
             }, 1000);
         };
     </script>
